@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="row">
+    <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12 maindiv">
+      <div class="header">
+        Recipe
+      </div>
+      <div class="main">
+        <form [formGroup]="formGroup">
+          <mat-form-field class="fullwidth">
+            <input matInput placeholder="User Name" formControlName="userName" class="access">
+          </mat-form-field>
+
+          <mat-form-field class="fullwidth">
+            <input matInput type="password" placeholder="Password" formControlName="password" class="access">
+          </mat-form-field>
+          <button class="btn fullwidth" type="button" (click)="login()" >Login</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-lg-4 col-md-4 col-sm-0 col-xs-0"></div>
+  </div>
+</div>

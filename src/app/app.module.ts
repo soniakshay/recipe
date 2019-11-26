@@ -9,9 +9,13 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
+import { RecipeComponent } from './recipe/recipe.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RecipeComponent
   ],
   imports: [
     BrowserModule,
