@@ -18,6 +18,7 @@
  }
  .fullwidth {
    width:100%;
+   margin-top:10px;;
  }
 :host /deep/ .mat-focused {
   border-bottom:0px;
@@ -25,4 +26,16 @@
 .btn {
   background: #1F62FF;
   color:white;
+}
+:host /deep/ .mat-form-field-infix
+{
+  border: 1px solid #ccc;
+
+}
+:host /deep/ .mat-form-field-infix label {
+  padding-left: 7px;
+}
+
+:host /deep/ .mat-form-field-infix label span {
+  color:gray
 }

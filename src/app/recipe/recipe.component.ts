@@ -11,6 +11,7 @@ export class RecipeComponent implements OnInit {
   public formGroup: FormGroup;
   ingredient: FormArray;
   req:any;
+  isLoading:boolean = false;
   constructor(private _fb: FormBuilder,
     private http: HttpClient) { }
     ngOnInit() {
@@ -56,25 +57,28 @@ export class RecipeComponent implements OnInit {
       });
     }
     addandRemoveValidation(controlName,minControl,maxControl) {
-      if (this.formGroup.controls[controlName].value) {
-        this.formGroup.controls[minControl].setValidators([Validators.required]);
-        this.formGroup.controls[maxControl].setValidators([Validators.required]);
-      } else {
-        this.formGroup.controls[minControl].setErrors(null);
-        this.formGroup.controls[maxControl].setErrors(null);;
+      setTimeout(() => {
+        if (this.formGroup.controls[controlName].value) {
+           this.formGroup.get(minControl).setValidators(Validators.required);
+          this.formGroup.get(maxControl).setValidators(Validators.required);
+       } else {
+          this.formGroup.get(minControl).clearValidators();
+          this.formGroup.get(maxControl).clearValidators();
 
-      }
-
+        }
+        this.formGroup.get(minControl).updateValueAndValidity();
+        this.formGroup.get(maxControl).updateValueAndValidity();
+        }, 1000);
     }
   onSubmit(){
     if(this.formGroup.valid){
       this.req = this.setData();
       console.log(this.req);
 
-
+ //       this.isLoading = true;
         // let url = '';
       // this.http.post(url,this.req).subscribe((res:any) => {
-
+      //  this.isLoading = false;
       // });
 
 
@@ -83,10 +87,14 @@ export class RecipeComponent implements OnInit {
   }
 
 
+
+
   createItem(): FormGroup {
     return this._fb.group({
       Name: new FormControl(),
-      Cost: new FormControl()
+      Cost: new FormControl(),
+      fixIngrident:new FormControl(),
+      fixIngridentAmount:new FormControl(),
     });
   }
 

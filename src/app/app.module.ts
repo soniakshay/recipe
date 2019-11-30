@@ -11,11 +11,13 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RecipeComponent } from './recipe/recipe.component';
+import { LoaderComponent } from './loader/loader.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RecipeComponent
+    RecipeComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,

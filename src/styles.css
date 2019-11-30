@@ -5,3 +5,4 @@ background: #F2F5FA;
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+mat-error { font-size: 12px;font-weight:500;padding-left: 5px;}
