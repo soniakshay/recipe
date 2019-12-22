@@ -19,15 +19,7 @@
  .logodiv {
   padding:6px 48px
  }
- .desktopMenu ul li a {
-  color:rgb(51, 51, 51);
-  text-decoration: none;
- }
- .menuList ul li a {
-  color:rgb(51, 51, 51);
-  text-decoration: none;
- }
- .desktopMenu ul  li  {
+ .desktopMenu ul  li {
    display: inline-block;
     padding:18px 37px;
     color:rgb(51, 51, 51);
@@ -51,7 +43,14 @@
    border-radius: 2px;;
    box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 5px 0px;
  }
-
+ .desktopMenu ul li a {
+  color:rgb(51, 51, 51);
+  text-decoration: none;
+ }
+ .menuList ul li a {
+  color:rgb(51, 51, 51);
+  text-decoration: none;
+ }
 .subtitle {
   color:gray;
 }
@@ -167,13 +166,10 @@
 }
 .menuIcon {
   padding:20px;
-  display: none;;
+  display:none;
 }
 @media only screen and (max-width: 600px) {
-  .toglebtn {
-    display: block;
-  }
-  .menuIcon {
+  .toglebtn,.menuIcon {
     display: block;
   }
 .desktopMenu {

@@ -12,6 +12,7 @@ export class RecipeComponent implements OnInit {
   ingredient: FormArray;
   req:any;
   isLoading:boolean = false;
+  menu:boolean = false;
   constructor(private _fb: FormBuilder,
     private http: HttpClient) { }
     ngOnInit() {
@@ -75,11 +76,13 @@ export class RecipeComponent implements OnInit {
       this.req = this.setData();
       console.log(this.req);
 
- //       this.isLoading = true;
-        // let url = '';
-      // this.http.post(url,this.req).subscribe((res:any) => {
-      //  this.isLoading = false;
-      // });
+      this.isLoading = true;
+       let url = 'http://localhost:8080/ReceipeBuilder/buildReceipe';
+       this.http.post(url,this.req).subscribe((res:any) => {
+          this.isLoading = false;
+       },(err)=>{
+          this.isLoading =false;
+        });
 
 
     }
@@ -236,5 +239,9 @@ export class RecipeComponent implements OnInit {
 
   }
 
+  menuToggle(){
+    this.menu = this.menu ? false : true;
+
+  }
 
 }

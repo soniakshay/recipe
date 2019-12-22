@@ -1,0 +1,11 @@
+@import 'ag-grid-community/dist/styles/ag-grid.css';
+@import 'ag-grid-community/dist/styles/ag-theme-balham.css';
+ .ag-header-cell {
+  background:#fff;
+  border-bottom: 1px solid;
+
+}
+
+.ag-theme-balham .ag-root {
+  border:0px;
+}

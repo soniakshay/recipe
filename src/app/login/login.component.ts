@@ -18,6 +18,7 @@ export class LoginComponent implements OnInit {
     });
 
   constructor(private _fb: FormBuilder,
+
                 private router: Router,
               private http: HttpClient) { }
 
@@ -30,7 +31,7 @@ export class LoginComponent implements OnInit {
   }
   login() {
   if(this.formGroup.valid) {
-    let url = "http://192.168.43.113:8080/ReceipeBuilder/login";
+    let url = "http://localhost:8080/ReceipeBuilder/login";
     let obj = {
       email:this.formGroup.controls['userName'].value,
       password:this.formGroup.controls['password'].value,

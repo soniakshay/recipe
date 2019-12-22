@@ -1,406 +1,524 @@
-<app-loader *ngIf="isLoading" ></app-loader>
-<div class="container">
-    <form  [formGroup]="formGroup">
-  <!-- header -->
-  <div class="row">
-    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12 header">
-        Recipe
+<div class="header">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-3 col-md-3 col-9 logodiv ">
+        <img src="../../assets/logo.png">
+
+      </div>
+      <div class="col-lg-3 col-md-3 col-2 ">
+        <div class="desktopMenu">
+          <ul style="padding:0px;margin:0px;">
+            <li><a [routerLink]="['/recipe']">Recipe</a></li>
+            <li><a [routerLink]="['/recipeData']">Data</a></li>
+          </ul>
+
+        </div>
+
+        <div class="menuIcon" (click)="menuToggle()"  >
+          <div></div>
+          <div></div>
+          <div></div>
+
+        </div>
+      </div>
+
+
     </div>
   </div>
-
-  <!-- form open -->
-
-  <div class="row">
-      <div class="col-lg-4  col-md-4  col-xs-12 col-sm-12 myCol  ">
-          <mat-form-field class="fullwidth">
-              <input matInput
-              placeholder="Recipe Name"
-              formControlName ="recipeName"
-             >
-            </mat-form-field>
-      </div>
-      <div class="col-lg-4  col-md-4  col-xs-12 col-sm-12 align-content-center myCol">
-          <mat-form-field class="example-full-width qtytextfiled">
-              <input matInput
-              placeholder="Quantity"
-              formControlName ="recipeQty"
-              >
-            </mat-form-field>
-      </div>
-
-      <div class="col-lg-4  col-md-4  col-xs-12 col-sm-12 align-content-center myCol ">
-          <mat-form-field class="example-full-width qtytextfiled">
-              <input matInput
-              placeholder="Unit"
-              formControlName ="recipeUnit"
-              >
-            </mat-form-field>
-
-       </div>
+</div>
 
 
-  </div>
-
-  <div class="row">
-    <div class="col-lg-12  col-md-12  col-xs-12 col-sm-12 align-content-center">
-      <span class="subtitle">Nutrition Fact</span>
+<div class="sideMenuDiv" *ngIf="menu" >
+  <div class="row" style="height:100%;">
+    <div class="col-lg-4 col-md-4 col-6 menuList">
+      <ul style="padding:0px;margin:0px;">
+        <li><a [routerLink]="['/recipe']">Recipe</a></li>
+        <li><a [routerLink]="['/recipeData']">Data</a></li>
+      </ul>
     </div>
-    <div class="col-lg-3  col-md-3  col-xs-12 col-sm-12     ">
-     </div>
-    <div class="col-lg-3  col-md-3  col-xs-12 col-sm-12 align-content-center ">
-        <mat-form-field class="example-full-width">
-            <input matInput
-            placeholder="Quantity"
-            formControlName ="nutritionQty"
-            class="access">
-          </mat-form-field>
+    <div class="col-lg-8 col-md-8 col-6 " (click)="menuToggle()" >
     </div>
-
-    <div class="col-lg-3  col-md-3  col-xs-12 col-sm-12 align-content-center  ">
-        <mat-form-field class="example-full-width">
-            <input matInput
-            placeholder="Unit"
-            formControlName ="nutritionUnit"
-            class="access">
-          </mat-form-field>
-
-     </div>
-     <div class="col-lg-3  col-md-3  col-xs-12 col-sm-12  ">
-      </div>
 
   </div>
 
-  <div class="row">
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-        <div class="card">
-          <mat-checkbox
-            (change)="addandRemoveValidation('protinNutration','protinMin','protinMax')"
-            class="mat-checkbox"
-            formControlName ="protinNutration">
+</div>
 
-          </mat-checkbox>
-          <span class="nutritionname">Protein</span>
-          <div class="minmaxbox">
-          <mat-form-field class="nutrationInput minmaxtextfiled">
-              <input matInput
-              formControlName ="protinMin"
-              placeholder="Min"
-              >
-          </mat-form-field>
-              <mat-form-field class="nutrationInput minmaxtextfiled">
-                <input matInput
-                formControlName ="protinMax"
-                placeholder="Max">
-             </mat-form-field>
+
+
+
+
+
+
+<form [formGroup]="formGroup">
+<div class="main">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-2 col-md-2 ">
+
+      </div>
+      <div class="col-lg-8 col-md-8 col-xs-12 col-sm-12 mainContainer ">
+
+        <div class="row">
+          <div class="col-lg-6 col-md-6 col-12 ">
+            <label for="recipeName">
+              Recipe Name
+            </label><br />
+            <input type="text" class="inputTypeText"    formControlName ="recipeName" >
+          </div>
+          <div class="col-lg-2 col-md-2 col-6 ">
+            <label for="qty">
+              Quantity
+            </label><br />
+            <input type="text"   formControlName ="recipeQty" class=" inputTypeText">
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-6 ">
+            <label for="unit">
+              Unit
+            </label><br />
+            <input type="text"      formControlName ="recipeUnit" class=" inputTypeText">
+          </div>
+
+        </div>
+
+        <div class="row" style="margin-top: 10px;">
+          <div class="col-lg-2 col-md-2">
+          </div>
+          <div class="col-lg-8 col-md-8 col-12  "
+            style="padding:5px 0px;text-align: center;border-bottom: 1px solid #e2e1e1;">
+            <h4 class="subtitle">Nutration Facts</h4>
+          </div>
+          <div class="col-lg-2 col-md-2">
+          </div>
+
+
+        </div>
+
+        <div class="row" style="margin-top:20px;">
+          <div class="col-lg-2 col-md-2 col-6 ">
+            <label for="qty">
+              Quantity
+            </label><br />
+            <input type="text"  formControlName ="nutritionQty" class=" inputTypeText">
+          </div>
+
+          <div class="col-lg-4 col-md-4 col-6 ">
+            <label for="unit">
+              Unit
+            </label><br />
+            <input type="text"     formControlName ="nutritionUnit" class=" inputTypeText">
+          </div>
+
+        </div>
+        <div class="nutrationList">
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                formControlName ="protinNutration"
+                (change)="addandRemoveValidation('protinNutration','protinMin','protinMax')"
+                class="largerCheckbox"> <span class="nutrationLabel">Protein</span>
+              </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text" formControlName ="protinMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"   formControlName ="protinMax"class=" inputTypeText">
 
             </div>
 
 
-        </div>
-      </div>
+          </div>
 
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('lipidNutration','lipidMin','lipidMax')"
-              formControlName ="lipidNutration"></mat-checkbox>
-
-
-            <span class="nutritionname">Lipid</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="lipidMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="lipidMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('lipidNutration','lipidMin','lipidMax')"
+                formControlName ="lipidNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Lipid</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"
+              formControlName ="lipidMin"
+              class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"
+              formControlName ="lipidMax"
+              class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
 
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('ashNutration','ashMin','ashMax')"
-              formControlName ="ashNutration"></mat-checkbox>
 
-            <span class="nutritionname">Ash</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="ashMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="ashMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('ashNutration','ashMin','ashMax')"
+                formControlName ="ashNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Ash</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"
+              formControlName ="ashMin"
+              class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"
+              formControlName ="ashMax"
+               class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
-
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('fiberNutration','fiberMin','fiberMax')"
-              formControlName ="fiberNutration"></mat-checkbox>
 
 
 
-            <span class="nutritionname">Fiber</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="fiberMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="fiberMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('fiberNutration','fiberMin','fiberMax')"
+                      formControlName ="fiberNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Fiber</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text" formControlName ="fiberMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text" formControlName ="fiberMax" class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
-
-     <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('sugarNutration','sugarMin','sugarMax')"
-              formControlName ="sugarNutration"></mat-checkbox>
 
 
-
-            <span class="nutritionname">Sugar</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="sugarMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="sugarMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('sugarNutration','sugarMin','sugarMax')"
+                        formControlName ="sugarNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Fiber</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"   formControlName ="sugarMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text" formControlName ="sugarMax" class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
-
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('calciumNutration','calciumMin','calciumMax')"
-              formControlName ="calciumNutration"></mat-checkbox>
 
 
-            <span class="nutritionname">Calcium</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="calciumMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="calciumMax"
-                      placeholder="Max">
-                   </mat-form-field>
 
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('calciumNutration','calciumMin','calciumMax')"
+                formControlName ="calciumNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Calcium</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"  formControlName ="calciumMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text" formControlName ="calciumMax" class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
 
 
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="example-margin"
-              (change)="addandRemoveValidation('ironNutration','ironMin','ironMax')"
-              formControlName ="ironNutration"></mat-checkbox>
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('ironNutration','ironMin','ironMax')"
 
-
-
-            <span class="nutritionname">Iron</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="ironMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="ironMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+                            formControlName ="ironNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Iron</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"  formControlName ="ironMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"  formControlName ="ironMax" class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
-
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('potassiumNutration','potassiumMin','potassiumMax')"
-                formControlName ="potassiumNutration"></mat-checkbox>
 
 
-            <span class="nutritionname">Potassium</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="potassiumMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="potassiumMax"
-                      placeholder="Max">
-                   </mat-form-field>
 
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('potassiumNutration','potassiumMin','potassiumMax')"
+                formControlName ="potassiumNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">Potassium</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"
+              formControlName ="potassiumMin"
+              class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"
+              formControlName ="potassiumMax"
+              class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
 
 
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('sodiumNutration','sodiumMin','sodiumMax')"
 
-              formControlName ="sodiumNutration"></mat-checkbox>
-
-
-            <span class="nutritionname">Sodium</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="sodiumMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="sodiumMax"
-                      placeholder="Max">
-                   </mat-form-field>
-
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('sodiumNutration','sodiumMin','sodiumMax')"
+                formControlName ="sodiumNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">sodium</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"  formControlName ="sodiumMin" class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"  formControlName ="sodiumMax" class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
 
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-          <div class="card">
-              <mat-checkbox class="mat-checkbox"
-              (change)="addandRemoveValidation('fa_satNutration','fa_satMin','fa_satMax')"
 
-              formControlName ="fa_satNutration"></mat-checkbox>
 
-            <span class="nutritionname">FA_Sat</span>
-            <div class="minmaxbox">
-                <mat-form-field class="nutrationInput minmaxtextfiled">
-                    <input matInput
-                    formControlName ="fa_satMin"
-                    placeholder="Min">
-                  </mat-form-field>
-                  <mat-form-field class="nutrationInput minmaxtextfiled">
-                      <input matInput
-                      formControlName ="fa_satMax"
-                      placeholder="Max">
-                   </mat-form-field>
 
+          <div class="row">
+            <div class="col-lg-6 col-md-6 col-xs-12 col-sm-12 ">
+              <div class="checkboxdiv">
+                <input type="checkbox"
+                (change)="addandRemoveValidation('fa_satNutration','fa_satMin','fa_satMax')"
+
+                                formControlName ="fa_satNutration"
+                class="largerCheckbox"> <span class="nutrationLabel">FA_Sat</span>
               </div>
+            </div>
+
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Min
+              </label><br />
+              <input type="text"
+              formControlName ="fa_satMin"
+               class=" inputTypeText">
+            </div>
+            <div class="col-lg-3 col-md-3 col-6 ">
+              <label for="qty">
+                Max
+              </label><br />
+              <input type="text"
+              formControlName ="fa_satMax"
+              class=" inputTypeText">
+
+            </div>
 
 
           </div>
-      </div>
 
-  </div>
-
-
-
-
-
-  <div class="row" style="padding-top:10px;">
-      <div class="col-lg-12  col-md-12  col-xs-12 col-sm-12 align-content-center">
-        <span class="subtitle">Ingredient Details</span>
-      </div>
-      <div class="col-lg-12  col-md-12  col-xs-12 col-sm-12 align-content-center">
-         <mat-form-field class="nutrationInput qtytextfiled" >
-              <input matInput
-              formControlName ="ingredientUnit"
-              placeholder="Unit">
-            </mat-form-field>
-      </div>
-
-
-  </div>
-
-  <div class="row">
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol" formArrayName="ingredient"  *ngFor="let item of formGroup.get('ingredient').controls; let i = index;">
-        <div class="card" [formGroupName]="i">
-            <mat-form-field class="halfwidth">
-                <input matInput
-                formControlName ="Name"
-                placeholder="Name">
-              </mat-form-field>
-
-              <mat-form-field class="halfwidth">
-                  <input matInput
-                  formControlName ="Cost"
-                  placeholder="Cost">
-                </mat-form-field>
-              <div style="display: flex;">
-                <mat-checkbox class="mat-checkbox1"
-                formControlName ="fixIngrident"></mat-checkbox>
-
-                <mat-form-field class="halfwidth">
-                  <input matInput
-                  formControlName ="fixIngridentAmount"
-                  placeholder="Fix Inngredient">
-                </mat-form-field>
-                </div>
 
         </div>
-      </div>
-      <div class="col-lg-3  col-md-4  col-xs-12 col-sm-12 nutritioncol">
-        <div class="card card1" >
-                <button type="button" (click)="addItem()"  class="btn btn-primary addBtn"  >+</button>
+
+
+
+
+        <div class="ingridentDiv" style="margin-top:30px;" >
+          <div class="row" style="margin-top: 10px;">
+            <div class="col-lg-2 col-md-2">
+            </div>
+            <div class="col-lg-8 col-md-8 col-12  "
+              style="padding:5px 0px;text-align: center;border-bottom: 1px solid #e2e1e1;">
+              <h4 class="subtitle">Ingredient</h4>
+            </div>
+           <div class="col-lg-2 col-md-2" style="text-align: right;" >
+              <button class="addbtn" (click)="addItem()"  >+</button>
+
+            </div>
+
+
+          </div>
+
+
+          <div class="row " style="margin:10px 0px;">
+            <div class="col-lg-4 col-md-4">
+            </div>
+            <div class="col-lg-4 col-md-4">
+
+            <label for="name">Unit</label><br>
+            <input type="text" id="name" formControlName ="ingredientUnit" class="inputTypeText">
+            </div>
+            <div class="col-lg-4 col-md-4">
+            </div>
+          </div>
+
+          <div formArrayName="ingredient"  *ngFor="let item of formGroup.get('ingredient').controls; let i = index;">
+            <div class="row"  [formGroupName]="i">
+              <div class="col-lg-4 col-md-4 col-8">
+                <label for="name">Name</label><br>
+                <input type="text" id="name" formControlName ="Name" class="inputTypeText">
+              </div>
+
+              <div class="col-lg-2 col-md-2 col-4">
+                <label for="cost">Cost</label><br>
+                <input type="text" id="cost"   formControlName ="Cost" class="inputTypeText">
+              </div>
+
+              <div class="col-lg-2 col-md-2 col-4" style="text-align: center;padding: 35px 0px;">
+                <input type="checkbox"  formControlName ="fixIngrident" class="largerCheckbox">
+              </div>
+              <div class="col-lg-4 col-md-4 col-8" >
+                <label for="fixIngridentAmount">Fix Inngredient</label><br>
+                <input type="text" formControlName ="fixIngridentAmount" id="fixIngridentAmount" class="inputTypeText">
+              </div>
+            </div>
+          </div>
+
+
+
 
         </div>
+
+
+
+
+
+
+
+
+
+
+
+
+        <div class="row" style="padding:20px;">
+          <div class="col-lg-12 col-md-12 col-sm-12 col-12 align-content-center">
+            <button class="btn submitBtn" (click)="onSubmit()" >Submit</button>
+          </div>
       </div>
-  </div>
 
 
-  <div class="row" style="padding:20px;">
-      <div class="col-lg-12 col-md-12 col-sm-12 col-12 align-content-center">
-        <button class="btn btn-primary fullwidth" (click)="onSubmit()" >Submit</button>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
       </div>
-  </div>
 
-</form>
+    </div>
+
+  </div>
 
 </div>
+</form>

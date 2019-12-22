@@ -12,12 +12,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './login/login.component';
 import { RecipeComponent } from './recipe/recipe.component';
 import { LoaderComponent } from './loader/loader.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { RecipeDataComponent } from './recipe-data/recipe-data.component';
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RecipeComponent,
-    LoaderComponent
+    LoaderComponent,
+    RecipeDataComponent,
   ],
   imports: [
     BrowserModule,
@@ -26,8 +29,8 @@ import { LoaderComponent } from './loader/loader.component';
     MatInputModule,
     MatCheckboxModule,
     ReactiveFormsModule,
-    HttpClientModule
-
+    HttpClientModule,
+    AgGridModule.withComponents([AppComponent,RecipeDataComponent])
   ],
   providers: [],
   bootstrap: [AppComponent]
